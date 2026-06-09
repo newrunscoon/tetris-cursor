@@ -1,0 +1,158 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a2e;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #eee;
+  padding: 16px;
+}
+
+.game-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.board-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  flex-shrink: 0;
+}
+
+#game-board {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 2;
+  background-color: #000;
+  border: 2px solid #444;
+}
+
+.game-over-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.game-over-overlay.hidden {
+  display: none;
+}
+
+.game-over-text {
+  font-size: clamp(1.25rem, 5vw, 1.75rem);
+  font-weight: 700;
+  color: #ff6b6b;
+  letter-spacing: 0.05em;
+}
+
+#restart-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4ecdc4;
+  color: #1a1a2e;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#restart-button:hover {
+  background-color: #6ee7de;
+}
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.info-box {
+  padding: 14px 16px;
+  background-color: #16213e;
+  border: 2px solid #444;
+  border-radius: 4px;
+}
+
+.info-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.info-value {
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+#next-piece {
+  display: block;
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  background-color: #000;
+  border: 1px solid #333;
+}
+
+@media (min-width: 640px) {
+  .game-container {
+    flex-wrap: nowrap;
+    max-width: none;
+    gap: 24px;
+  }
+
+  .board-wrapper {
+    width: 300px;
+    max-width: none;
+  }
+
+  .side-panel {
+    width: 140px;
+    max-width: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .side-panel {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .info-box {
+    flex: 1 1 calc(50% - 6px);
+    min-width: 120px;
+  }
+
+  .info-box:last-child {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
